@@ -28,3 +28,19 @@ class SeedNetwork(nn.Module):
         #Output Layer
         x = torch.sigmoid(self.output(x))
         return x
+    
+#main model for loan prediction (try out different values for hidden layers to improve baseline)
+class LoanNetwork(nn.Module):
+    def __init__(self, input_features=11, layer1=20, layer2=20, out_features=2):
+        """Initialize the model for loan prediction"""
+        super().__init__()
+        self.fc1 = nn.Linear(input_features, layer1)
+        self.fc2 = nn.Linear(layer1, layer2)
+        self.out = nn.Linear(layer2, out_features)
+        
+    def forward(self, x):
+        """Forward pass with 11 input features"""
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.out(x)
+        return x

@@ -34,3 +34,9 @@ def seed_data(num_input):
     y_test = torch.LongTensor(y_test).to(device)
     
     return X_train, X_test, y_train, y_test
+
+def gather_loans():
+    """ Load tensors for loans dataset """
+    X_train, y_train = torch.load("../data/loans/tensor_train.pt")
+    X_test, y_test = torch.load("../data/loans/tensor_test.pt")
+    return X_train, X_test, y_train, y_test
