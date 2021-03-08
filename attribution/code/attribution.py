@@ -20,7 +20,7 @@ X_train, X_test, y_train, y_test = gather_loans()#seed_data(5)
 n_features = X_train.shape[1]
 
 # defining number of examples
-N = 5
+N = 100
 
 # defining baselines for each input tensor
 baseline = torch.zeros(N, n_features)
@@ -50,7 +50,7 @@ ig = IntegratedGradients(model)
 #                                                  target=0)
 
 # defining and applying Input * Gradient to see the importance of neurons for a layer and given input.
-lgs = LayerGradientShap(model, model.fc1)
+lgs = LayerConductance(model, model.fc1)
 attributions, approximation_error = lgs.attribute(inputs=input,
                                                  baselines=baseline,
                                                  return_convergence_delta=True,
