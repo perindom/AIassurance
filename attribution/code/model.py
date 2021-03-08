@@ -31,7 +31,7 @@ class SeedNetwork(nn.Module):
     
 #main model for loan prediction (try out different values for hidden layers to improve baseline)
 class LoanNetwork(nn.Module):
-    def __init__(self, input_features=11, layer1=20, layer2=20, out_features=2):
+    def __init__(self, input_features, layer1=30, layer2=20, out_features=2):
         """Initialize the model for loan prediction"""
         super().__init__()
         self.fc1 = nn.Linear(input_features, layer1)
